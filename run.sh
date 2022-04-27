@@ -1,0 +1,1 @@
+docker run --privileged --network=host -it devbox

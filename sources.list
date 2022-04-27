@@ -1,0 +1,8 @@
+deb [trusted=yes] https://mirrors.tuna.tsinghua.edu.cn/debian testing main contrib non-free
+# deb-src [trusted=yes] https://mirrors.tuna.tsinghua.edu.cn/debian testing main contrib non-free
+
+deb [trusted=yes] https://mirrors.tuna.tsinghua.edu.cn/debian testing-updates main contrib non-free
+# deb-src [trusted=yes] https://mirrors.tuna.tsinghua.edu.cn/debian testing-updates main contrib non-free
+
+deb [trusted=yes] https://mirrors.tuna.tsinghua.edu.cn/debian-security testing-security main contrib non-free
+# deb-src [trusted=yes] https://mirrors.tuna.tsinghua.edu.cn/debian-security testing-security main contrib non-free
