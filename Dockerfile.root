@@ -17,17 +17,6 @@ ARG ROOT_PASSWD
 
 RUN echo root:$ROOT_PASSWD | chpasswd
 
-# user init
-ARG USER
-
-ARG USER_PASSWD
-
-RUN useradd --create-home --user-group --shell /bin/bash $USER
-
-RUN echo $USER:$USER_PASSWD | chpasswd
-
-RUN adduser $USER sudo
-
 # common apt package
 RUN apt update
 
@@ -53,19 +42,15 @@ RUN go install -v github.com/cweill/gotests/gotests@latest
 RUN go install -v github.com/fatih/gomodifytags@latest 
 RUN go install -v github.com/josharian/impl@latest 
 RUN go install -v github.com/haya14busa/goplay/cmd/goplay@latest 
-RUN go install -v github.com/go-delve/delve/cmd/dlv@latest 
 RUN go install -v honnef.co/go/tools/cmd/staticcheck@latest 
+RUN go install -v github.com/go-delve/delve/cmd/dlv@latest 
 RUN go install -v golang.org/x/tools/gopls@latest
+RUN go install -v github.com/davidrjenni/reftools/cmd/fillstruct@latest
 
-# code server
+# code server 
 RUN https_proxy=$HTTPS_PROXY sh -c 'curl -fsSL https://code-server.dev/install.sh | sh'
 
 ENV EXTENSIONS_GALLERY '{"serviceUrl": "https://marketplace.visualstudio.com/_apis/public/gallery","cacheUrl": "https://vscode.blob.core.windows.net/gallery/index","itemUrl": "https://marketplace.visualstudio.com/items"}'
-
-# user init
-USER $USER
-
-WORKDIR /home/$USER
 
 # zsh
 RUN git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
@@ -92,7 +77,7 @@ RUN code-server --install-extension jebbs.plantuml
 RUN code-server --install-extension ms-python.python 
 RUN code-server --install-extension adpyke.vscode-sql-formatter
 
-COPY --chown=$USER:$USER vscode.settings.json /home/$USER/.local/share/code-server/User/settings.json
+COPY --chown=root:root vscode.settings.json /root/.local/share/code-server/User/settings.json
 
 # git
 RUN git config --global user.name "fantasiajo"

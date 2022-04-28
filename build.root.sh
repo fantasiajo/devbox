@@ -1,0 +1,1 @@
+docker build --build-arg ROOT_PASSWD=${ROOT_PASSWD} --build-arg USER=${USER} --build-arg USER_PASSWD=${USER_PASSWD} --build-arg CODE_SERVER_PASSWD=${CODE_SERVER_PASSWD} -t devbox .
