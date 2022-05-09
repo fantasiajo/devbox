@@ -98,5 +98,6 @@ COPY --chown=$USER:$USER vscode.settings.json /home/$USER/.local/share/code-serv
 # git
 RUN git config --global user.name "fantasiajo"
 RUN git config --global user.email "lizhen95m@outlook.com"
+RUN git config --global pager.branch false
 
 ENTRYPOINT ["code-server","--bind-addr","0.0.0.0:9999"]
