@@ -23,5 +23,6 @@
         },
         "apiVersion": 2,
         "showGlobalVariables": true
-    }
+    },
+    "terminal.integrated.defaultProfile.linux": "zsh"
 }
