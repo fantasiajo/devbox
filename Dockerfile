@@ -92,6 +92,7 @@ RUN code-server --install-extension jebbs.plantuml
 RUN code-server --install-extension ms-python.python 
 RUN code-server --install-extension adpyke.vscode-sql-formatter
 RUN code-server --install-extension cweijan.vscode-mysql-client2
+RUN code-server --install-extension mutantdino.resourcemonitor
 
 COPY --chown=$USER:$USER vscode.settings.json /home/$USER/.local/share/code-server/User/settings.json
 
